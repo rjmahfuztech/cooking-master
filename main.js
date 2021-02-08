@@ -1,46 +1,59 @@
 // Meal search...
-document.getElementById('search-btn').addEventListener('click', () => {
-    const searchMeal = document.getElementById('search-meal');
-    const searchMealName = searchMeal.value;
-    // console.log(searchMealName);
-    displayMeal(searchMealName);
-})
-
-const displayMeal = meals => {
-    fetch(`https://www.themealdb.com/api/json/v1/1/search.php?f=${meals}`)
-    .then(res => res.json())
-    .then(data => console.log(data))
-}
-
-const mealInfo = mealName => {
-    const mealDetail = document.getElementById('meal-details');
-    for (let i = 0; i < mealName.length; i++) {
-        const mealList = mealName[i];
-        
+const mealSearchBtn = () => {
+    const searchMeal = document.getElementById('search-meal').value;
+    document.getElementById('search-meal').value = '';
+    // data load..
+    if (searchMeal === '') {
+        alert('Sorry, please type food name');
+    }
+    else {
+        const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchMeal}`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => displayMeals(data.meals))
     }
 }
 
+//display meal info...
+const displayMeals = meals => {
+    const mealContainer = document.getElementById('meal-container');
+    mealContainer.innerHTML = "";
+    meals.forEach(mealName => {
+        const mealDiv = document.createElement('div');
+        mealDiv.className = 'meal-style';
+        const mealInfo = `
+        <div onclick ="getMealFullInfo(${mealName.idMeal})">
+        <img src ="${mealName.strMealThumb}">
+        <h3>${mealName.strMeal}</h3>
+        </div>
+        `;
+        mealDiv.innerHTML = mealInfo;
+        mealContainer.appendChild(mealDiv);
+    });
 
+}
 
-
-
-
-/*
-
-const displayCountryDetail = name => {
-    const url = `https://restcountries.eu/rest/v2/name/${name}`
+const getMealFullInfo = name => {
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${name}`;
     fetch(url)
-    .then(res => res.json())
-    .then(data => renderCountryInfo(data[0]));
+        .then(res => res.json())
+        .then(data => displayMealDetails(data.meals[0]))
 }
 
-const renderCountryInfo = country => {
-    const countryDetail = document.getElementById('country-detail');
-    countryDetail.innerHTML = `
-        <h1>${country.name}</h1>
-        <p>${country.population}</p>
-        <p>${country.area}</p>
-        <img src="${country.flag}">
-    `
+const displayMealDetails = mealDetails => {
+    const detailDiv = document.getElementById('display-meal-info');
+    detailDiv.innerHTML =`
+    <div class = "style">
+    <img src ="${mealDetails.strMealThumb}">
+    <h5>${mealDetails.strMeal}</h5>
+    <h6>Ingredients</h6>
+    <ul>
+        <li>${mealDetails.strMeasure1}</li>
+        <li>${mealDetails.strMeasure2}</li>
+        <li>${mealDetails.strMeasure3}</li>
+        <li>${mealDetails.strMeasure4}</li>
+        <li>${mealDetails.strMeasure5}</li>
+    </ul>
+    </div>
+    `;
 }
-*/

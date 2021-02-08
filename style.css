@@ -1,28 +1,43 @@
-#all-meal-category{
+#meal-container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
 }
-.meals{
-    margin: 20px;
-    padding: 20px;
-    width: 250px;
+.meal-style, .style{
+    margin: 15px;
+    padding: 15px;
+    width: 280px;
     text-align: center;
     border: 1px solid lime;
+    box-shadow: 5px 5px 30px rgb(144, 126, 126);
     border-radius: 20px;
 }
-.meals img{
+.meal-style img, .style img{
     width: 100%;
+    border-radius: 20px;
 }
-.search-input{
+.meal-style h3{
+    margin-top: 10px;
+}
+.search-section{
     text-align: center;
+    margin: 20px 0;
+    padding: 30px;
+    background-color: rgba(255, 166, 0, 0.774);
+    border-radius: 20px;
 }
-.search-input input, button{
+.search-section input, button{
     padding: 10px 30px;
     border: 0;
     border-radius: 10px;
     font-size: 18px;
 }
-.search-input button{
+.search-section button{
     background-color: blanchedalmond;
+}
+.style ul li, h6{
+    text-align: left;
+}
+.style h6{
+    margin-left: 15px;
 }
