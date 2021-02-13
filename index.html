@@ -18,19 +18,26 @@
         <!--Search Section....-->
         <div class="search-section">
             <input id="search-meal" type="text">
-            <button onclick="mealSearchBtn()">Search</button>
+            <button id="search-btn" onclick="mealSearchBtn()">Search</button>
         </div>
         <!--Meal display section-->
         <div id="display-meal-info">
 
         </div>
-
+        <!-- Loading Spinners -->
+        <div id="load-spinner" class="d-flex justify-content-center d-none">
+            <div class="spinner-border text-info" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
         <div id="meal-container">
 
         </div>
     </main>
+    
 
     <script src="main.js"></script>
+    
 </body>
 
 </html>

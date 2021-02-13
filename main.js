@@ -3,6 +3,7 @@ const mealSearchBtn = () => {
     const searchMeal = document.getElementById('search-meal').value;
     document.getElementById('search-meal').value = '';
     // data load..
+    toggleSpinner();
     if (searchMeal === '') {
         alert('Sorry, please type food name');
     }
@@ -13,6 +14,13 @@ const mealSearchBtn = () => {
         .then(data => displayMeals(data.meals))
     }
 }
+// Search by press enter button..
+const searchMeal = document.getElementById("search-meal");
+searchMeal.addEventListener("keyup", function(event) {
+  if (event.key === 'Enter') {
+   document.getElementById("search-btn").click();
+  }
+});
 
 //display meal info...
 const displayMeals = meals => {
@@ -29,6 +37,7 @@ const displayMeals = meals => {
         `;
         mealDiv.innerHTML = mealInfo;
         mealContainer.appendChild(mealDiv);
+        toggleSpinner();
     });
 
 }
@@ -56,4 +65,12 @@ const displayMealDetails = mealDetails => {
     </ul>
     </div>
     `;
+}
+
+// Load Spinner..
+const toggleSpinner = () => {
+    const spinner = document.getElementById('load-spinner');
+    const meals = document.getElementById('meal-container');
+    spinner.classList.toggle('d-none');
+    meals.classList.toggle('d-none');
 }
