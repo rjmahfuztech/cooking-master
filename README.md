@@ -6,7 +6,7 @@
 
 ### visit website [https://rjmahfuztech.github.io/cooking-master/](https://rjmahfuztech.github.io/cooking-master/)
 
-## Used API of [https://www.themealdb.com/](https://www.themealdb.com/)
+### Used API of [https://www.themealdb.com/](https://www.themealdb.com/)
 
 ### Used Technology
 
