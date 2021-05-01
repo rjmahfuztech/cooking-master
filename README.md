@@ -8,6 +8,8 @@
 
 ### Used API of [https://www.themealdb.com/](https://www.themealdb.com/)
 
+-> You can search here any kind of food.
+
 ### Used Technology
 
 + HTML
